@@ -1,9 +1,9 @@
 
 <div class="m-4">
-  <h1>Your Tasks</h1>
+  <h1 class="border-bottom mb-3" >Your Tasks</h1>
 
   <% @tasks.each do |task| %>
-    <div class="d-flex align-items-center">
+    <div class="d-flex align-items-center mb-2">
       <% if task.completed %>
         <i class="far fa-check-square"></i>
       <% else %>
@@ -11,6 +11,18 @@
       <% end %>
    <!--     <i class="far fa-check-square"></i> -->
       <p class="ms-2 mt-0 mb-0"><%= link_to task.title, task_path(task) %> </p>
+      <%= link_to task_path(task), method: :delete, data: { confirm: 'Do you want to delete?' } do %>
+        <i class="fas fa-trash ms-3"></i>
+      <% end %>
     </div>
   <% end %>
+
+
+
+
+
+  <div class="d-flex align-items-center border-top pt-4 mt-1">
+    <i class="fas fa-plus"></i>
+    <p class="ms-2 mt-0 mb-0"><%= link_to "Add a new task", new_task_path %> </p>
+  </div>
 </div>
