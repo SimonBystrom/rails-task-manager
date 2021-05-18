@@ -12,7 +12,12 @@ class TasksController < ApplicationController
   end
 
   def create
-    raise
+    @task = Task.new(task_params)
+    if @task.save
+      redirect_to task_path(@task)
+    else
+      render 'new.html.erb'
+    end
   end
 
   private
